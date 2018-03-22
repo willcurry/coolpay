@@ -1,36 +1,35 @@
-require 'httparty'
 require 'json'
+require_relative 'http_requests.rb'
 
 class CoolpayAPI
   BASE_URI = 'https://coolpay.herokuapp.com/api'
 
+  def initialize
+    @http = HTTPRequests.new
+  end
+
   def login
     body = {:username => ENV['COOLPAY_USERNAME'], 'apikey' => ENV['COOLPAY_APIKEY']}
     headers = {"Content-Type" => "application/x-www-form-urlencoded"}
-    response = post_request("/login", body, headers)
-    response["token"]
+    post_request("/login", body, headers, "token")
   end
 
   def get_all_recipients(token)
-    response = get_request("/recipients", get_headers(token))
-    response["recipients"]
+    get_request("/recipients", get_headers(token), "recipients")
   end
 
   def create_recipient(name, token)
     body = {"recipient" => {"name" => name}}
-    response = post_request("/recipients", body, post_headers(token))
-    response["recipient"]
+    post_request("/recipients", body, post_headers(token), "recipient")
   end
 
   def create_payment(amount, currency, recipient_id, token)
     body = {"payment" => {"amount" => amount, "currency" => currency, "recipient_id" => recipient_id}}
-    response = post_request("/payments", body, post_headers(token))
-    response["payment"]
+    post_request("/payments", body, post_headers(token), "payment")
   end
 
   def get_all_payments(token)
-    response = get_request("/payments", get_headers(token))
-    response["payments"]
+    get_request("/payments", get_headers(token), "payments")
   end
 
   private
@@ -43,16 +42,15 @@ class CoolpayAPI
     {"Content-Type" => "application/json", "Authorization" => "Bearer #{token}"}
   end
 
-  def post_request(route, body, headers)
-     response = HTTParty.post(BASE_URI + route,
-                  :body => body,
-                  :headers => headers)
-     JSON.parse(response.body)
+  def post_request(route, body, headers, index)
+     response = @http.post(BASE_URI + route, body, headers)
+     parsed_response = JSON.parse(response.body)
+     parsed_response[index]
   end
 
-  def get_request(route, headers)
-    response = HTTParty.get(BASE_URI + route,
-                  :headers => headers)
-    JSON.parse(response.body)
+  def get_request(route, headers, index)
+    response = @http.get(BASE_URI + route, headers)
+    parsed_response = JSON.parse(response.body)
+    parsed_response[index]
   end
 end
