@@ -4,8 +4,8 @@ require_relative 'http_requests.rb'
 class CoolpayAPI
   BASE_URI = 'https://coolpay.herokuapp.com/api'
 
-  def initialize
-    @http = HTTPRequests.new
+  def initialize(http=HTTPRequests.new)
+    @http = http
   end
 
   def login
