@@ -11,9 +11,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    puts session[:token]
-    puts @handler.get_all_recipients(session[:token])
     erb :index
+  end
+
+  post "/create-recipient" do
+    @handler.create_recipient(params, session[:token])
+    redirect "/"
   end
 
   private

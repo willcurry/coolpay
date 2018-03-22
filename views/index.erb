@@ -6,8 +6,14 @@
   </tr>
   <% @handler.get_all_recipients(session[:token]).each do |recipient| %>
     <tr>
-      <td><%= recipient.id %></td>
-      <td><%= recipient.name %></td>
+      <td><%= recipient["id"] %></td>
+      <td><%= recipient["name"] %></td>
     </tr>
   <% end %>
 </table>
+
+<form action="/create-recipient" method="post">
+  Full name:<br>
+  <input type="text" name="fullname"><br>
+  <input type="submit" value="Create">
+</form>

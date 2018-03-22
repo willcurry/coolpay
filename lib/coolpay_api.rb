@@ -17,4 +17,12 @@ class CoolpayAPI
     parsed_response = JSON.parse(response.body)
     parsed_response["recipients"]
   end
+
+  def create_recipient(name, token)
+    response = HTTParty.post("#{BASE_URI}/recipients",
+                  :body => {"recipient" => {"name" => name}},
+                  :headers => {"Content-Type" => "application/x-www-form-urlencoded", "Authorization" => "Bearer #{token}"})
+    parsed_response = JSON.parse(response.body)
+    parsed_response["recipient"]
+  end
 end
