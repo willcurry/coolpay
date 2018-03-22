@@ -22,6 +22,10 @@ class Handler
     amount = params[:amount]
     currency = params[:currency]
     recipient_id = params[:recipient_id]
-    @coolpay_api.create_payment(amount, currency, recipient_id)
+    @coolpay_api.create_payment(amount, currency, recipient_id, token)
+  end
+
+  def get_all_payments(token)
+    @coolpay_api.get_all_payments(token)
   end
 end

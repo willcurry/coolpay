@@ -12,6 +12,26 @@
   <% end %>
 </table>
 
+<h3>Payments</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Amount</th>
+    <th>Currency</th>
+    <th>Recipient ID</th>
+    <th>Status</th>
+  </tr>
+  <% @handler.get_all_payments(session[:token]).each do |recipient| %>
+    <tr>
+      <td><%= recipient["id"] %></td>
+      <td><%= recipient["amount"] %></td>
+      <td><%= recipient["currency"] %></td>
+      <td><%= recipient["recipient_id"] %></td>
+      <td><%= recipient["status"] %></td>
+    </tr>
+  <% end %>
+</table>
+
 <h3>Create Recipient</h3>
 <form action="/create-recipient" method="post">
   Full name:<br>

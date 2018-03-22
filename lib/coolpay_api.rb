@@ -12,27 +12,35 @@ class CoolpayAPI
   end
 
   def get_all_recipients(token)
-    headers = {"Content-Type" => "application/json", "Authorization" => "Bearer #{token}"}
-    response = get_request("/recipients", headers)
+    response = get_request("/recipients", get_headers(token))
     response["recipients"]
   end
 
   def create_recipient(name, token)
     body = {"recipient" => {"name" => name}}
-    response = post_request("/recipients", body, post_headers)
+    response = post_request("/recipients", body, post_headers(token))
     response["recipient"]
   end
 
-  def create_payment(amount, currency, recipient_id)
+  def create_payment(amount, currency, recipient_id, token)
     body = {"payment" => {"amount" => amount, "currency" => currency, "recipient_id" => recipient_id}}
-    response = post_request("/payments", body, post_headers)
+    response = post_request("/payments", body, post_headers(token))
     response["payment"]
+  end
+
+  def get_all_payments(token)
+    response = get_request("/payments", get_headers(token))
+    response["payments"]
   end
 
   private
 
-  def post_headers
+  def post_headers(token)
     {"Content-Type" => "application/x-www-form-urlencoded", "Authorization" => "Bearer #{token}"}
+  end
+
+  def get_headers(token)
+    {"Content-Type" => "application/json", "Authorization" => "Bearer #{token}"}
   end
 
   def post_request(route, body, headers)
