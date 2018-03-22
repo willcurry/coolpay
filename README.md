@@ -18,3 +18,8 @@ Run the project:
 Run the tests:
 
 `rspec`
+
+## Assumptions:
+
+- UI/UX is not a concern
+- The user knows what they are doing
