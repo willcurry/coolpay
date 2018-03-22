@@ -6,4 +6,10 @@ RSpec.describe Handler do
     handler = Handler.new(CoolpayAPIMock.new)
     expect(handler.get_token).to eq("fake token")
   end
+
+  it "returns a list of all recipients" do
+    handler = Handler.new(CoolpayAPIMock.new)
+    expected_hash = {"id"=>"fake id", "name"=>"fake name"}
+    expect(handler.get_all_recipients("fake token")).to eq(expected_hash)
+  end
 end

@@ -6,13 +6,13 @@ class ApplicationController < Sinatra::Base
   set :views, "#{settings.root}/../views"
 
   before do
-    if !has_token? then
-      handler = Handler.new
-      session[:token] = handler.get_token
-    end
+    @handler = Handler.new
+    session[:token] = @handler.get_token unless has_token?
   end
 
   get "/" do
+    puts session[:token]
+    puts @handler.get_all_recipients(session[:token])
     erb :index
   end
 

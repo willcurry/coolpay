@@ -8,4 +8,8 @@ class Handler
   def get_token
     @coolpay_api.login
   end
+
+  def get_all_recipients(token)
+    @coolpay_api.get_all_recipients(token)
+  end
 end

@@ -1,1 +1,13 @@
-<h1>Hello!</h1>
+<table>
+  <p>Recipients:</p>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% @handler.get_all_recipients(session[:token]).each do |recipient| %>
+    <tr>
+      <td><%= recipient.id %></td>
+      <td><%= recipient.name %></td>
+    </tr>
+  <% end %>
+</table>
