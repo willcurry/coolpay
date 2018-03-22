@@ -18,4 +18,10 @@ RSpec.describe Handler do
     params = {:fullname => "fake name"}
     expect(handler.create_recipient(params, "fake token")).to eq(expected_hash)
   end
+
+  it "returns id when payment is made" do
+    params = {:amount => 10, :currency => "GBP", :recipient_id => "fake id"}
+    payment = handler.create_payment(params, "fake token")
+    expect(payment["id"]).to eq("31db334f-9ac0-42cb-804b-09b2f899d4d2")
+  end
 end

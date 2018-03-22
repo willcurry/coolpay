@@ -15,13 +15,22 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/create-recipient" do
-    @handler.create_recipient(params, session[:token])
+    @handler.create_recipient(params, token)
+    redirect "/"
+  end
+
+  post "/create-payment" do
+    @handler.create_payment(params, token)
     redirect "/"
   end
 
   private
 
+  def token
+    session[:token]
+  end
+
   def has_token?
-    !session[:token].nil?
+    !token.nil?
   end
 end

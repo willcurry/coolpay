@@ -1,5 +1,5 @@
+<h3>Recipients</h3>
 <table>
-  <p>Recipients:</p>
   <tr>
     <th>ID</th>
     <th>Name</th>
@@ -12,8 +12,20 @@
   <% end %>
 </table>
 
+<h3>Create Recipient</h3>
 <form action="/create-recipient" method="post">
   Full name:<br>
   <input type="text" name="fullname"><br>
+  <input type="submit" value="Create">
+</form>
+
+<h3>Create Payment</h3>
+<form action="/create-payment" method="post">
+  Recipient ID:<br>
+  <input type="text" name="recipient_id"><br>
+  Amount:<br>
+  <input type="text" name="amount"><br>
+  Currency:<br>
+  <input type="text" name="currency"><br>
   <input type="submit" value="Create">
 </form>
