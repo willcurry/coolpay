@@ -4,7 +4,7 @@
     <th>ID</th>
     <th>Name</th>
   </tr>
-  <% @handler.get_all_recipients(session[:token]).each do |recipient| %>
+  <% @recipients.get_all(session[:token]).each do |recipient| %>
     <tr>
       <td><%= recipient["id"] %></td>
       <td><%= recipient["name"] %></td>
@@ -21,7 +21,7 @@
     <th>Recipient ID</th>
     <th>Status</th>
   </tr>
-  <% @handler.get_all_payments(session[:token]).each do |recipient| %>
+  <% @payments.get_all(session[:token]).each do |recipient| %>
     <tr>
       <td><%= recipient["id"] %></td>
       <td><%= recipient["amount"] %></td>

@@ -1,13 +1,19 @@
 require 'sinatra'
-require_relative 'handler.rb'
+require_relative 'auth.rb'
+require_relative 'payments.rb'
+require_relative 'recipients.rb'
 
 class ApplicationController < Sinatra::Base
   use Rack::Session::Pool, :expire_after => 2592000
   set :views, "#{settings.root}/../views"
 
   before do
-    @handler = Handler.new
-    session[:token] = @handler.get_token unless has_token?
+    @recipients = Recipients.new
+    @payments = Payments.new
+    if !has_token?
+      auth = Auth.new
+      session[:token] = auth.get_token
+    end
   end
 
   get "/" do
@@ -15,12 +21,12 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/create-recipient" do
-    @handler.create_recipient(params, token)
+    @recipients.create(params, token)
     redirect "/"
   end
 
   post "/create-payment" do
-    @handler.create_payment(params, token)
+    @payments.create(params, token)
     redirect "/"
   end
 
