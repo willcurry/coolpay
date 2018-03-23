@@ -1,0 +1,29 @@
+<h3>Recipients</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% @recipients_to_display.each do |recipient| %>
+    <tr>
+      <td><%= recipient["id"] %></td>
+      <td><%= recipient["name"] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Create Recipient</h3>
+<form action="/recipients/create" method="post">
+  Full name:<br>
+  <input type="text" name="fullname"><br>
+  <input type="submit" value="Create">
+</form>
+
+<h3>Search Recipient</h3>
+<form action="/recipients/search" method="post">
+  Full name:<br>
+  <input type="text" name="fullname"><br>
+  <input type="submit" value="Search">
+</form>
+
+<a href="/">Home</a>

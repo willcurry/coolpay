@@ -24,7 +24,7 @@ class CoolpayAPIMock
     JSON.parse(get_payments_payload)['payments']
   end
 
-  def get_by_name(token, name)
+  def get_recipient_by_name(token, name)
     JSON.parse(recipients_by_name_payload)['recipients']
   end
 
