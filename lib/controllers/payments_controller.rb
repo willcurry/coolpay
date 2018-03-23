@@ -3,16 +3,16 @@ require_relative '../payments.rb'
 
 class PaymentsController < ApplicationController
   before do
-    @payments = Payments.new
+    @payments = Payments.new(session[:token])
   end
 
   post "/create" do
-    @payments.create(params, session[:token])
+    @payments.create(params)
     redirect "/payments"
   end
 
   get "/" do
-    @payments_to_display = @payments.get_all(session[:token])
+    @payments_to_display = @payments.get_all
     erb :payments
   end
 end
