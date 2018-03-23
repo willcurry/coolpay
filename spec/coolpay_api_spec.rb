@@ -37,4 +37,10 @@ RSpec.describe CoolpayAPI do
     expect(http).to receive(:post).with("https://coolpay.herokuapp.com/api/payments", expected_body, expected_headers).and_call_original
     api.create_payment(10, "GBP", "fake id", "fake token")
   end
+
+  it "calls get request with correct headers and correct uri on get_recipient_by_name" do
+    expected_headers = {"Content-Type"=>"application/json", "Authorization"=>"Bearer fake token"}
+    expect(http).to receive(:get).with("https://coolpay.herokuapp.com/api/recipients?name=fake name", expected_headers).and_call_original
+    api.get_recipient_by_name("fake name", "fake token")
+  end
 end

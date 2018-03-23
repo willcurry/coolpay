@@ -11,6 +11,11 @@ class PaymentsController < ApplicationController
     redirect "/payments"
   end
 
+  post "/search" do
+    @payments_to_display = @payments.get_by_id(params)
+    erb :payments
+  end
+
   get "/" do
     @payments_to_display = @payments.get_all
     erb :payments

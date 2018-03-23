@@ -58,11 +58,16 @@ class CoolpayAPIMock
 
   def get_payments_payload
     {"payments" =>
-     {"id" => "31db334f-9ac0-42cb-804b-09b2f899d4d2",
+     [{"id" => "31db334f-9ac0-42cb-804b-09b2f899d4d2",
       "amount" => "10.50",
       "currency" => "GBP",
       "recipient_id" => "6e7b146e-5957-11e6-8b77-86f30ca893d3",
-      "status" => "paid"}
+      "status" => "paid"},
+    {"id" => "41db334f-9ac0-42cb-804b-09b2f899d4d2",
+      "amount" => "20.50",
+      "currency" => "GBP",
+      "recipient_id" => "6e7b146e-5957-11e6-8b77-86f30ca893d3",
+      "status" => "failed"}],
     }.to_json
   end
 end
