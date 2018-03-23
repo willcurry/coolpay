@@ -14,4 +14,10 @@ RSpec.describe Recipients do
     params = {:fullname => "fake name"}
     expect(recipients.create(params, "fake token")).to eq(expected_hash)
   end
+
+  it "returns the correct recipient on search by name" do
+    expected_hash = {"id"=>"123", "name"=>"jake mcfriend"}
+    params = {:fullname => "fake name"}
+    expect(recipients.get_by_name(params, "fake token")).to eq(expected_hash)
+  end
 end

@@ -30,6 +30,11 @@ class ApplicationController < Sinatra::Base
     redirect "/"
   end
 
+  post "/search-recipient" do
+    @found_recipients = @recipients.get_by_name(params, token)
+    erb :recipient
+  end
+
   private
 
   def token

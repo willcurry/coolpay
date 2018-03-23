@@ -32,6 +32,10 @@ class CoolpayAPI
     get_request("/payments", get_headers(token), "payments")
   end
 
+  def get_recipient_by_name(name, token)
+    get_request("/recipients?name=#{name}", get_headers(token), "recipients")
+  end
+
   private
 
   def post_headers(token)

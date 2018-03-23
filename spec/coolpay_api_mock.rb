@@ -24,6 +24,10 @@ class CoolpayAPIMock
     JSON.parse(get_payments_payload)['payments']
   end
 
+  def get_by_name(token, name)
+    JSON.parse(recipients_by_name_payload)['recipients']
+  end
+
   private
 
   def login_json_payload
@@ -36,6 +40,10 @@ class CoolpayAPIMock
 
   def create_recipient_payload(name)
     {'recipient' => {'id' => 'fake id', 'name' => name}}.to_json
+  end
+
+  def recipients_by_name_payload
+    {'recipients' => {'id' => '123', 'name' => 'jake mcfriend'}}.to_json
   end
 
   def create_payment_payload(amount, currency, recipient_id)
