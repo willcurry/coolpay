@@ -1,21 +1,23 @@
 [![Build Status](https://travis-ci.org/willcurry/coolpay.svg?branch=master)](https://travis-ci.org/willcurry/coolpay)
+[![Coverage Status](https://coveralls.io/repos/github/willcurry/coolpay/badge.svg?branch=master)](https://coveralls.io/github/willcurry/coolpay?branch=master)
 
 ## Setup
 
-Install the gems:
+### Install the gems:
 
 `bundle install`
 
-Set the required enviroment variables:
+### Set the required enviroment variables:
 
 `export COOLPAY_APIKEY='xxxxxx'`
+
 `export COOLPAY_USERNAME='xxxxxx'`
 
-Run the project:
+### Run the project:
 
 `rackup`
 
-Run the tests:
+### Run the tests:
 
 `rspec`
 
