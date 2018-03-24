@@ -1,5 +1,5 @@
-require_relative "application_controller.rb"
-require_relative '../recipients.rb'
+require "controllers/application_controller.rb"
+require "recipients.rb"
 
 class RecipientsController < ApplicationController
   before do

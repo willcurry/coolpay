@@ -1,6 +1,8 @@
-require_relative "lib/controllers/application_controller.rb"
-require_relative "lib/controllers/payments_controller.rb"
-require_relative "lib/controllers/recipients_controller.rb"
+$: << File.expand_path("lib", File.dirname(__FILE__))
+
+require "controllers/application_controller"
+require "controllers/payments_controller"
+require "controllers/recipients_controller"
 
 map("/") {run ApplicationController}
 map("/recipients") {run RecipientsController}

@@ -1,5 +1,5 @@
 require 'json'
-require_relative 'http_requests.rb'
+require 'http_requests'
 
 class CoolpayAPI
   BASE_URI = "https://coolpay.herokuapp.com/api"

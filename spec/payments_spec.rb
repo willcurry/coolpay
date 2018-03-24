@@ -1,5 +1,4 @@
-require_relative '../lib/payments.rb'
-require_relative 'coolpay_api_mock.rb'
+require 'payments'
 
 RSpec.describe Payments do
   let(:payments) {Payments.new(CoolpayAPIMock.new, "fake token")}

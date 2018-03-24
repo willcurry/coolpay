@@ -1,4 +1,4 @@
-require_relative 'coolpay_api.rb'
+require 'coolpay_api'
 
 class Recipients
   def initialize(coolpay_api=CoolpayAPI.new, token)

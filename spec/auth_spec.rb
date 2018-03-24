@@ -1,5 +1,4 @@
-require_relative '../lib/auth.rb'
-require_relative 'coolpay_api_mock.rb'
+require 'auth'
 
 RSpec.describe Auth do
   let(:auth) {Auth.new(CoolpayAPIMock.new)}

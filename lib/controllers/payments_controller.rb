@@ -1,5 +1,5 @@
-require_relative "application_controller.rb"
-require_relative '../payments.rb'
+require "controllers/application_controller.rb"
+require "payments.rb"
 
 class PaymentsController < ApplicationController
   before do

@@ -1,5 +1,4 @@
-require_relative '../lib/coolpay_api.rb'
-require_relative 'http_requests_mock.rb'
+require 'coolpay_api'
 
 RSpec.describe CoolpayAPI do
   let(:http) {HTTPRequestsMock.new}

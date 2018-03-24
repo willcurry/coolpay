@@ -1,4 +1,4 @@
-require_relative '../auth.rb'
+require "auth"
 require "sinatra"
 
 class ApplicationController < Sinatra::Base
