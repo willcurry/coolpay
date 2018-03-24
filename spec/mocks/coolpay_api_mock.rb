@@ -35,7 +35,7 @@ class CoolpayAPIMock
   end
 
   def get_recipients_payload
-    {'recipients' => {'id' => 'fake id', 'name' => 'fake name'}}.to_json
+    {'recipients' => [{'id' => 'fake id', 'name' => 'fake name'}]}.to_json
   end
 
   def create_recipient_payload(name)
@@ -43,7 +43,7 @@ class CoolpayAPIMock
   end
 
   def recipients_by_name_payload
-    {'recipients' => {'id' => '123', 'name' => 'jake mcfriend'}}.to_json
+    {'recipients' => [{'id' => '123', 'name' => 'jake mcfriend'}]}.to_json
   end
 
   def create_payment_payload(amount, currency, recipient_id)

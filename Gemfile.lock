@@ -17,6 +17,8 @@ GEM
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
+    rack-test (0.8.3)
+      rack (>= 1.0, < 3)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -53,6 +55,7 @@ DEPENDENCIES
   coveralls
   httparty
   json
+  rack-test (= 0.8.3)
   rspec
   sinatra (= 2.0.1)
 

@@ -1,8 +1,11 @@
 require 'coolpay_api'
 
 class Recipients
-  def initialize(coolpay_api=CoolpayAPI.new, token)
+  def initialize(coolpay_api=CoolpayAPI.new)
     @coolpay_api = coolpay_api
+  end
+
+  def set_token(token)
     @token = token
   end
 

@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'controllers/payments_controller'
 require 'rack/test'
+require 'controllers/payments_controller'
 require 'payments'
 
 RSpec.describe PaymentsController do
