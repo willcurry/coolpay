@@ -5,10 +5,13 @@ class ApplicationController < Sinatra::Base
   use Rack::Session::Pool, :expire_after => 2592000
   set :views, File.expand_path('../../../views', __FILE__)
 
+  configure do
+    set :auth, ::Auth.new
+  end
+
   before do
     if !has_token?
-      auth = Auth.new
-      session[:token] = auth.get_token
+      session[:token] = settings.auth.get_token
     end
   end
 

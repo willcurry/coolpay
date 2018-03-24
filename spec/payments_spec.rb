@@ -1,7 +1,11 @@
 require 'payments'
 
 RSpec.describe Payments do
-  let(:payments) {Payments.new(CoolpayAPIMock.new, "fake token")}
+  let(:payments) {Payments.new(CoolpayAPIMock.new)}
+
+  before(:each) do
+    payments.set_token("fake token")
+  end
 
   it "returns an object containing an id when payment is made" do
     params = {:amount => 10, :currency => "GBP", :recipient_id => "fake id"}
