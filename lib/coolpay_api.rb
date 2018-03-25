@@ -10,7 +10,6 @@ class CoolpayAPI
   end
 
   def login
-    raise "You have a missing enviroment variable" unless ENV['COOLPAY_APIKEY'] && ENV['COOLPAY_USERNAME']
     body = {:username => ENV['COOLPAY_USERNAME'], 'apikey' => ENV['COOLPAY_APIKEY']}
     headers = {"Content-Type" => "application/x-www-form-urlencoded"}
     response = @http.post(BASE_URI + "/login", body, headers)
